@@ -19,7 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "assets/css/bootstrap.css",
+        "assets/css/ng2-select.css",
+        "assets/css/styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
