@@ -7,5 +7,5 @@
 export const environment = {
     production: false,
     authKey: 'btr-auth',
-    apiEndpoint: 'http://localhost:50000/'
+    apiEndpoint: 'http://localhost:50000/api/'
 };

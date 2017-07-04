@@ -15,7 +15,8 @@ export class AuthService implements OnDestroy {
     authKey = environment.authKey;
     refreshSubscription: Subscription;
 
-    constructor(private store: Store<fromRoot.State>, private http: AuthHttp) {
+    constructor(private store: Store<fromRoot.State>,
+                private http: AuthHttp) {
     }
 
     ngOnDestroy() {
@@ -105,7 +106,7 @@ export class AuthService implements OnDestroy {
                 // refresh when there are 5 minutes left
                 const nextRefresh = expiresIn - (5 * 1000 * 60);
 
-                console.log('refreshing in (seconds):',
+                console.log('refreshing in (minutes):',
                     nextRefresh / 1000 / 60);
 
                 return Observable.timer(nextRefresh);
