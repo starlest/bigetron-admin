@@ -1,2 +1,2 @@
+export { Article } from './article';
 export { Auth } from './auth';
-export { User } from './user';

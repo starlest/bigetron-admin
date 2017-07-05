@@ -61,14 +61,16 @@ export class AuthEffects {
                     console.log(err);
                     return of(new aa.RemoveFailAction());
                 })
-                .do(() => this.store.dispatch(go(['/'])));
+                .do(() => this.store.dispatch(go(['/login'])));
         });
 
     @Effect()
     loadSuccess$: Observable<Action> = this.actions$
         .ofType(aa.ActionTypes.LOAD_SUCCESS)
-        .map(
-            (action: aa.LoadSuccessAction) => new aa.ScheduleRefreshAction());
+        .map(() => {
+            this.store.dispatch(go(['/articles']));
+            return new aa.ScheduleRefreshAction();
+        });
 
     @Effect()
     scheduleRefresh$: Observable<Action> = this.actions$
@@ -77,7 +79,7 @@ export class AuthEffects {
             this.authService.scheduleRefresh();
             return new aa.ScheduleRefreshSuccessAction();
         });
-    
+
     @Effect()
     refreshToken$: Observable<Action> = this.actions$
         .ofType(aa.ActionTypes.REFRESH)

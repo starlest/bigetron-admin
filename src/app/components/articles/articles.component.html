@@ -1,1 +1,30 @@
-articles
+<div class="container">
+
+  <button class="btn btn-primary my-5"
+          routerLink="/articles/add">
+    Add
+  </button>
+
+  <ng-table class="table-responsive mb-5"
+            [config]="config"
+            (tableChanged)="onChangeTable(config)"
+            (cellClicked)="onCellClick($event)"
+            [rows]="rows"
+            [columns]="columns">
+  </ng-table>
+
+  <pagination *ngIf="config.paging"
+              class="pagination-sm justify-content-center"
+              [ngModel]="page"
+              [totalItems]="length"
+              [itemsPerPage]="itemsPerPage"
+              [maxSize]="maxSize"
+              [boundaryLinks]="true"
+              [rotate]="false"
+              (pageChanged)="onChangeTable(config, $event)"
+              (numPages)="numPages = $event">
+  </pagination>
+
+  <pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+
+</div>

@@ -3,15 +3,18 @@ import { ActionReducer, combineReducers } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { compose } from '@ngrx/core/compose';
 import { createSelector } from 'reselect';
+import * as fromArticles from './articles.reducer';
 import * as fromAuth from './auth.reducer';
 import * as fromRouter from '@ngrx/router-store';
 
 export interface State {
+    articles: fromArticles.State;
     auth: fromAuth.State;
     router: fromRouter.RouterState;
 }
 
 const reducers = {
+    articles: fromArticles.reducer,
     auth: fromAuth.reducer,
     router: fromRouter.routerReducer
 };
@@ -26,6 +29,23 @@ export function reducer(state: any, action: any) {
     }
     return developmentReducer(state, action);
 }
+
+/**
+ * Articles Reducers
+ */
+export const getArticlesState = (state: State) => state.articles;
+export const getArticlesLoaded = createSelector(getArticlesState,
+    fromArticles.getLoaded);
+export const getArticleEntities = createSelector(getArticlesState,
+    fromArticles.getEntities);
+export const getArticles = createSelector(getArticlesState,
+    fromArticles.getArticles);
+export const getArticle = (Id: string) => createSelector(getArticlesState,
+    fromArticles.getArticle(Id));
+export const getArticlesPageIndex = createSelector(getArticlesState,
+    fromArticles.getPageIndex);
+export const getArticlesTotalCount = createSelector(getArticlesState,
+    fromArticles.getTotalCount);
 
 /**
  * Auth Reducers
