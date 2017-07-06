@@ -7,7 +7,7 @@ import { AppRouting } from './app.routing';
 
 import { AppComponent } from './app.component';
 import {
-    ArticlesComponent, LoginComponent, NotFoundPageComponent
+   ArticleComponent, ArticlesComponent, LoginComponent, NotFoundPageComponent
 } from './components';
 
 import { AuthHttp } from './auth.http';
@@ -31,6 +31,7 @@ import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 @NgModule({
     declarations: [
         AppComponent,
+        ArticleComponent,
         ArticlesComponent,
         LoginComponent,
         NotFoundPageComponent,

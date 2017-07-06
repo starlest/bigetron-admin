@@ -1,0 +1,44 @@
+<div class="container">
+  <button class="btn btn-outline-primary my-5"
+          routerLink="/articles">
+    Back
+  </button>
+
+  <div class="card mb-5">
+
+    <div class="card-block">
+      <p class="card-text">
+        <span class="font-weight-bold">Id:</span>
+        {{article.Id}}
+      </p>
+      <p class="card-text">
+        <span class="font-weight-bold">Title:</span>
+        {{article.Title}}
+      </p>
+      <p class="card-text">
+        <span class="font-weight-bold">Author:</span>
+        {{article.Author}}
+      </p>
+      <p class="card-text">
+        <span class="font-weight-bold">Date:</span>
+        {{article.Date}}
+      </p>
+      <p class="card-text">
+        <span class="font-weight-bold">Content:</span>
+        {{article.Content}}
+      </p>
+      <p class="card-text">
+        <span class="font-weight-bold">CoverImageUrl:</span>
+      </p>
+      <div [innerHTML]="safeContent()"></div>
+    </div>
+
+
+    <div class="card-footer">
+      <button class="btn btn-primary" (click)="editArticle()">
+        Edit
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -18,6 +18,11 @@ export class ArticlesComponent implements OnInit, OnDestroy {
 
     public columns: Array<any> = [
         {
+            title: 'Id',
+            name: 'Id',
+            filtering: { filterString: '', placeholder: 'Filter by id' }
+        },
+        {
             title: 'Title',
             name: 'Title',
             filtering: { filterString: '', placeholder: 'Filter by title' }

@@ -24,11 +24,11 @@ export class AuthEffects {
         .ofType(aa.ActionTypes.LOAD_FROM_LOCAL_STORAGE)
         .startWith(new aa.LoadFromLocalStorageAction())
         .map(() => {
-            const authEntity = this.authService.getAuthFromLocalStorage();
-            if (!authEntity) {
+            const auth = this.authService.getAuthFromLocalStorage();
+            if (!auth) {
                 return new aa.StartupLoadFailAction();
             }
-            return new aa.LoadSuccessAction(authEntity);
+            return new aa.LoadSuccessAction(auth);
         });
 
 

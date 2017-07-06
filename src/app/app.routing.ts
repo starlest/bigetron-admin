@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import {
-    ArticlesComponent, LoginComponent, NotFoundPageComponent
+    ArticleComponent, ArticlesComponent, LoginComponent, NotFoundPageComponent
 } from './components';
 import { LoggedInGuard, NotLoggedInGuard } from './guards';
 
@@ -18,6 +18,11 @@ export const appRoutes: Routes = [
     {
         path: 'articles',
         component: ArticlesComponent,
+        canActivate: [NotLoggedInGuard]
+    },
+    {
+        path: 'articles/:Id',
+        component: ArticleComponent,
         canActivate: [NotLoggedInGuard]
     },
     {
