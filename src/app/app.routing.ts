@@ -2,7 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {
     ArticleComponent, ArticlesComponent, LoginComponent, NotFoundPageComponent
 } from './components';
-import { LoggedInGuard, NotLoggedInGuard } from './guards';
+import { ArticleExistsGuard, LoggedInGuard, NotLoggedInGuard } from './guards';
 
 export const appRoutes: Routes = [
     {
@@ -23,7 +23,7 @@ export const appRoutes: Routes = [
     {
         path: 'articles/:Id',
         component: ArticleComponent,
-        canActivate: [NotLoggedInGuard]
+        canActivate: [NotLoggedInGuard, ArticleExistsGuard]
     },
     {
         path: '404',

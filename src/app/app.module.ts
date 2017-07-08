@@ -13,7 +13,7 @@ import {
 import { AuthHttp } from './auth.http';
 import { ArticlesService, AuthService } from './services';
 
-import { LoggedInGuard } from './guards';
+import { ArticleExistsGuard, LoggedInGuard, NotLoggedInGuard } from './guards';
 
 import { SimpleNotificationsModule } from 'angular2-notifications-lite';
 
@@ -26,7 +26,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterStoreModule } from '@ngrx/router-store';
 import { reducer } from './reducers/index';
 import { ArticlesEffects, AuthEffects } from './effects';
-import { NotLoggedInGuard } from './guards/not-logged-in.guard';
 
 @NgModule({
     declarations: [
@@ -63,7 +62,7 @@ import { NotLoggedInGuard } from './guards/not-logged-in.guard';
         EffectsModule.run(AuthEffects),
     ],
     providers: [DatePipe, AuthHttp, ArticlesService, ArticlesEffects, AuthService,
-        LoggedInGuard, NotLoggedInGuard],
+       ArticleExistsGuard, LoggedInGuard, NotLoggedInGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {
