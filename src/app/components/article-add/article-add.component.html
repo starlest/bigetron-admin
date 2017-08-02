@@ -1,0 +1,46 @@
+<div class="container">
+  <button class="btn btn-outline-primary my-5"
+          routerLink="/articles">
+    Back
+  </button>
+
+  <div class="card mb-5">
+    <div class="card-block">
+      <form [formGroup]="addArticleForm" (submit)="addArticle()">
+        <div class="form-group">
+          <label class="col-form-label" for="inputTitle">Title</label>
+          <input type="text" class="form-control"
+                 id="inputTitle" placeholder="Enter title" maxlength="100"
+                 formControlName="Title" required>
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputCoverImageUrl">Cover Image Url</label>
+          <input type="text" class="form-control"
+                 id="inputCoverImageUrl" placeholder="Enter cover image url"
+                 maxlength="100"
+                 formControlName="CoverImageUrl" required>
+        </div>
+
+        <div class="form-group">
+          <label class="col-form-label" for="inputContent">Content</label>
+          <textarea class="form-control" id="inputContent" rows="3"
+                    placeholder="Enter content"
+                    formControlName="Content" required></textarea>
+        </div>
+
+        <button type="submit"
+                [disabled]="submitted || !addArticleForm.valid"
+                class="btn btn-primary">Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card mb-5">
+    <div class="card-block">
+      <h4 class="card-title">Preview</h4>
+      <div [innerHTML]="safeContent()"></div>
+    </div>
+  </div>
+</div>

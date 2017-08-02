@@ -35,7 +35,8 @@ export class ArticlesComponent implements OnInit, OnDestroy {
         {
             title: 'Date',
             name: 'Date',
-            filtering: { filterString: '', placeholder: 'Filter by date' }
+            filtering: { filterString: '', placeholder: 'Filter by date' },
+            sort: 'desc'
         },
     ];
 
@@ -76,6 +77,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
                 this.sortOrder = column.name.toLowerCase() + '_' + column.sort;
         });
     }
+
     ngOnInit() {
         const articlesSource = this.store.select(
             fromRoot.getArticles);
@@ -106,7 +108,7 @@ export class ArticlesComponent implements OnInit, OnDestroy {
         page: this.page, itemsPerPage: this.itemsPerPage
     }): void {
         // page changed
-        if (this.page != page.page) {
+        if (this.page !== page.page) {
             this.updateData(page.page, page.itemsPerPage);
             return;
         }
