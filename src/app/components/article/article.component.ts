@@ -5,6 +5,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { Article } from '../../models';
 import * as fromRoot from '../../reducers';
+import { go } from '@ngrx/router-store';
 
 
 
@@ -48,8 +49,7 @@ export class ArticleComponent {
         return this.sanitizer.bypassSecurityTrustHtml(this.article.Content);
     }
 
-    // TODO: implement
     public editArticle(): void {
-
+        this.store.dispatch(go(['/articles/' + this.articleId + '/edit']));
     }
 }

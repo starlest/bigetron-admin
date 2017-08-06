@@ -7,7 +7,7 @@ import { AppRouting } from './app.routing';
 
 import { AppComponent } from './app.component';
 import {
-   ArticleComponent, ArticleAddComponent, ArticlesComponent, LoginComponent, NotFoundPageComponent
+   ArticleComponent, ArticleAddComponent, ArticleEditComponent, ArticlesComponent, LoginComponent, NotFoundPageComponent
 } from './components';
 
 import { AuthHttp } from './auth.http';
@@ -32,6 +32,7 @@ import { ArticlesEffects, AuthEffects } from './effects';
         AppComponent,
         ArticleComponent,
         ArticleAddComponent,
+        ArticleEditComponent,
         ArticlesComponent,
         LoginComponent,
         NotFoundPageComponent,

@@ -62,4 +62,24 @@ export class ArticlesEffects {
                     return Observable.of(new aa.AddFailAction());
                 })
         });
+
+    @Effect()
+    updateArticle$: Observable<Action> = this.actions$
+        .ofType(aa.ActionTypes.UPDATE)
+        .map((action: aa.UpdateAction) => action.payload)
+        .switchMap(article => {
+            return this.articlesService.update(article)
+                .map(product => {
+                    this.notificationsService.success('Success', 'Article has' +
+                        ' been successfully updated.');
+                    return new aa.UpdateSuccessAction(product);
+                })
+                .catch(error => {
+                    this.notificationsService.error('Failure', 'Failed to update' +
+                        ' article. Please try again later.');
+                    console.log(error);
+                    return Observable.of(new aa.UpdateFailAction());
+                })
+                .do(() => this.store.dispatch(go(['/articles/' + article.Id])))
+        });
 }

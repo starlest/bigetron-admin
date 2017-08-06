@@ -31,6 +31,7 @@ export class AuthHttp implements OnDestroy {
 
     put(url, data, opts = {}) {
         this.configureAuth(opts);
+        console.log(opts);
         return this.http.put(url, data, opts);
     }
 

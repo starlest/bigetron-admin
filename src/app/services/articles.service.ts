@@ -55,10 +55,22 @@ export class ArticlesService {
      * @returns {Observable<any>} rxjs Observable encapsulating the response's
      * result
      */
-    public add(ledgerAccount: Article): Observable<any> {
+    public add(article: Article): Observable<any> {
         const url = this.baseUrl;
-        return this.http.post(url, JSON.stringify(ledgerAccount),
+        return this.http.post(url, JSON.stringify(article),
             getRequestOptions())
+            .map((response: Response) => response.json())
+            .catch(handleError);
+    }
+
+    /**
+     * Calls the [PUT] /articles Web API method to update an article
+     * @returns {Observable<any>} rxjs Observable encapsulating the response's
+     * result
+     */
+    update(article: Article) {
+        const url = this.baseUrl + '/' + article.Id;
+        return this.http.put(url, JSON.stringify(article), getRequestOptions())
             .map((response: Response) => response.json())
             .catch(handleError);
     }
